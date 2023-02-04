@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from map_tool import Tools
 import pickle
 
-datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4a/CRP4a_coldbox/results_LN2/"
-#plotdir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/RT_coldbox/rms_plots/"
+datadir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4a/coldbox_final/results_RT2/"
+plotdir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4a/coldbox_final/warm_plots/"
 
 #datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/LN_coldbox/rms_results_1/"
 #datadir1 = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/Plots/rms_results/"
@@ -62,7 +62,8 @@ def PlotCRP(rms,snc,st0,st1):
        bl=bls[1]
 
     fname = "RMS_{}_{}".format(bl,pkt)
-    
+   
+    plt.subplots(figsize=(10, 6)) 
     plt.scatter(xx_u,uplane,marker='o',label='u plane')
     plt.scatter(xx_v,vplane,marker='o',label='v plane')
     plt.scatter(xx_x,xplane,marker='o',label='x plane')
@@ -73,10 +74,10 @@ def PlotCRP(rms,snc,st0,st1):
     plt.title(fname)
 #    plt.savefig(plotdir+fname+".png")
 #    plt.ylim(0, 60)
-#    plt.savefig(plotdir+fname+"_zoomin.png")
+    plt.savefig(plotdir+fname+"_zoomin.png")
 #    plt.close()
     plt.show()
-        
+#        
 
 for snc in [0,1]:
     for st0 in [0,1]:

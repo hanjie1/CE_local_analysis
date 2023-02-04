@@ -24,8 +24,9 @@ femb_no = [1,34,38,45,3,61,35,5,12,42,41,49]
 nfemb=2
 fembs = [2]
 
-#datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/LN_coldbox/rms_data_1/femb10_femb18_femb14_femb59_LN/"
-datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4a/CRP4a_coldbox/coldbox_data_RT2/femb1_femb34_femb38_femb45_RT_R001/"
+datadir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4b/LN_coldbox/rms_data_1/femb10_femb18_femb14_femb59_LN/"
+#datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4a/CRP4a_coldbox/coldbox_data_RT2/femb1_femb34_femb38_femb45_RT_R001/"
+#datadir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4a/coldbox_final/coldbox_data_LN/femb1_femb34_femb38_femb45_LN"
 plotdir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/LN_coldbox/rms_plots/"
 
 datafile = datadir+"Raw_snc0_st01_st11.bin"
