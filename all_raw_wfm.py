@@ -49,19 +49,21 @@ def GetFFT(data,nset):
                x_freq[strip-1]=ch_freq
 
 
-femb_no = [1,34,38,45,3,61,35,5,12,42,41,49]
-#femb_no = [37,19,44,31,64,77,23,78,10,18,14,59]
+#femb_no = [1,34,38,45,3,61,35,5,12,42,41,49]
+femb_no = [37,19,44,31,64,77,23,78,10,18,14,59]
 fembs = [0,1,2,3]
 
-#datadir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4b/LN_coldbox/rms_data_1/femb10_femb18_femb14_femb59_LN/"
-pathdir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4a/coldbox_final/coldbox_data_RT2/"
-plotdir = "/Users/hanjie/Desktop/cold_electronics/CRP/CRP4/CRP4a/coldbox_final/RT_fft_plots/"
+#pathdir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4a/coldbox_final/coldbox_data_LN2/"
+#plotdir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4a/coldbox_final/fft_plots_LN2/"
+
+pathdir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4b/LN_coldbox/rms_data_1/"
+plotdir = "/home/hanjie/Desktop/protoDUNE/cold_electronics/CRP/CRP4b/LN_coldbox/fft_plots_1/"
 
 qc_tools = ana_tools()
 
 for i in range(0,3):
     fembids = [femb_no[i*4+0],femb_no[i*4+1],femb_no[i*4+2],femb_no[i*4+3]]
-    datadir = pathdir+"femb{}_femb{}_femb{}_femb{}_RT_R001/".format(fembids[0],fembids[1],fembids[2],fembids[3])
+    datadir = pathdir+"femb{}_femb{}_femb{}_femb{}_LN/".format(fembids[0],fembids[1],fembids[2],fembids[3])
 
     datafile = datadir + "Raw_snc1_st01_st11.bin"
     with open(datafile, 'rb') as fn:
@@ -81,12 +83,40 @@ for i in range(476):
 
     strip_fft = u_fft[i][1:]
     strip_fft = 10*np.log10(strip_fft)
-    plt.plot(u_freq[i][1:],strip_fft,label='u strip%d'%i)
+    plt.plot(u_freq[i][1:],strip_fft,label='u_strip%d'%i)
     if nl==0:
        plt.legend()
-#       plt.tight_layout()
-       plt.title("u plane FFT magnitude(dB) vs. freq(Hz)")
+       plt.title("u plane FFT magnitude(dB) vs. freq(Hz) LN")
        plt.savefig(plotdir+"uplane%d"%nn+".png")
        plt.close()
-       #plt.show()
-       #exit()
+
+for i in range(476):
+    nl = (i+1)%14
+    nn = (i+1)/14
+    if nl==1:
+       plt.subplots(figsize=(15, 9))
+
+    strip_fft = v_fft[i][1:]
+    strip_fft = 10*np.log10(strip_fft)
+    plt.plot(v_freq[i][1:],strip_fft,label='v_strip%d'%i)
+    if nl==0:
+       plt.legend()
+       plt.title("v plane FFT magnitude(dB) vs. freq(Hz) LN")
+       plt.savefig(plotdir+"vplane%d"%nn+".png")
+       plt.close()
+
+for i in range(584):
+    nl = (i+1)%8
+    nn = (i+1)/8
+    if nl==1:
+       plt.subplots(figsize=(15, 9))
+
+    strip_fft = x_fft[i][1:]
+    strip_fft = 10*np.log10(strip_fft)
+    plt.plot(x_freq[i][1:],strip_fft,label='x_strip%d'%i)
+    if nl==0:
+       plt.legend()
+       plt.title("x plane FFT magnitude(dB) vs. freq(Hz) LN")
+       plt.savefig(plotdir+"xplane%d"%nn+".png")
+       plt.close()
+
